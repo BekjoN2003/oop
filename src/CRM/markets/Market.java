@@ -4,6 +4,7 @@ package CRM.markets;
 import CRM.personnel.Employee;
 import CRM.product.Product;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Market {
@@ -14,12 +15,12 @@ public class Market {
     public Double square;
     public String startTime;
     public String endTime;
-    public String weekdays;
 
-    public Market(String name, String address, Double square){
+    public Market(String name, String address, Double square, int productCount){
         this.name = name;
         this.address = address;
         this.square = square;
+        products = new Product[productCount];
     }
 
     public Market(){
@@ -31,8 +32,8 @@ public class Market {
         double price, amount;
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("name");
-        name=scanner.nextLine();
+        System.out.println("productName");
+        name = scanner.nextLine();
         System.out.println("type");
         type = scanner.nextLine();
         System.out.println("unit");
@@ -44,15 +45,31 @@ public class Market {
 
         Product product = new Product(name, type, unit, price,amount);
         System.out.println(product);
+        products[0] = product;
+    }
+
+    public void getProduct(){
 
     }
 
 
     public String toString() {
-        return String.format("Nomi: %s \nManzili: %s \nHajmi: %f \nIsh boshlash vaqti: %s \nIsh tugash vaqti: %s\nHaftalik ish kuni 6/7, yakshanba dam olsih: %s",
-                name, address, square, startTime, endTime, weekdays);
+        return String.format("Nomi: %s \nManzili: %s \nHajmi: %f \nIsh boshlash vaqti: %s \nIsh tugash vaqti: %s\n",
+                name, address, square, startTime, endTime);
     }
     // %s -> string
     // %d -> butun son(integer, short, byte, long)
     // %f -> haqiqiy son(float, double)
 }
+
+ /* Data types (Ma'liumot turlari)
+
+
+
+                                   1- Primitive D.T. (int, char, bolean, byte,
+                                                long, short, float, double)
+     2 qismga bo'linadi =>
+                                    2- None primitive D.T.(Class, Object, Sting,
+                                                    Interface, Array)
+
+     */
