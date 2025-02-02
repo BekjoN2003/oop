@@ -16,14 +16,13 @@ public class Product {
         this.amount = amount;
     }
 
+    public Product(){
+
+    }
+
     @Override
-    public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", type='" + type + '\'' +
-                ", amount=" + amount +
-                ", unit='" + unit + '\'' +
-                '}';
+    public String toString(){
+        return String.format("productName: %s, type: %s, unit: %s, price: %.2f, amount: %.2f",
+                name,   type,   unit,   price,  amount);
     }
 }

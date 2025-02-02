@@ -4,7 +4,7 @@ package CRM.markets;
 import CRM.personnel.Employee;
 import CRM.product.Product;
 
-import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Market {
@@ -15,6 +15,10 @@ public class Market {
     public Double square;
     public String startTime;
     public String endTime;
+    /** index of new inserted product*/
+    private int index;
+
+    // Topshiriq: Yangi method qo'shish, yani Mahsulotni o'chirish degan;
 
     public Market(String name, String address, Double square, int productCount){
         this.name = name;
@@ -32,24 +36,49 @@ public class Market {
         double price, amount;
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("productName");
+        System.out.print("productName: ");
         name = scanner.nextLine();
-        System.out.println("type");
+        System.out.print("type: ");
         type = scanner.nextLine();
-        System.out.println("unit");
+        System.out.print("unit: ");
         unit = scanner.nextLine();
-        System.out.println("price");
+        System.out.print("price: ");
         price = scanner.nextDouble();
-        System.out.println("amount");
+        System.out.print("amount: ");
         amount = scanner.nextDouble();
 
         Product product = new Product(name, type, unit, price,amount);
-        System.out.println(product);
-        products[0] = product;
+
+        if (index == products.length){
+            resizeArray();
+        }
+        products[index++] = product;
+        /*
+         * postfix -> a++;
+         * prefix -> ++a;
+         * */
     }
 
     public void getProduct(){
 
+    }
+
+
+    public void resizeArray(){
+      //  Product[] temp = new Product[products.length * 2];
+
+//        for (int i = 0; i<products.length; i++){
+//            temp[i] =products[i];
+//        }
+//        products = temp;
+        products = Arrays.copyOf(products, products.length * 2);
+    }
+
+
+    public void printProduct(){
+        for (int i = 0; i<index; i++){
+            System.out.println(i+ 1 + "." + products[i]);
+        }
     }
 
 
