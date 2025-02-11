@@ -1,6 +1,7 @@
 package CRM;
 
 import CRM.markets.Market;
+import CRM.product.Product;
 
 import java.util.Scanner;
 
@@ -19,8 +20,20 @@ public class Main {
                 "08:00",
                 "22:00",
                 2,
-                5);
+                5
+        );
 
+        Product[] products = new Product[]{
+            new Product("banan", "meva", "kg", 20000D, 30D),
+                    new Product("shokolad", "shirinlik", "kg", 30000D, 45D),
+                    new Product("qovun", "meva", "dona", 10000D, 60D),
+                    new Product("tarvuz", "meva", "kg", 3000D, 40D),
+                    new Product("uzum", "meva", "kg", 25000D, 60D),
+                    new Product("nok", "meva", "kg", 30000D, 30D),
+                    new Product("go'shit", "go'sht mahsuloti", "kg", 100000D, 10D),
+                    new Product("cola", "ichimlik", "dona", 13000D, 50D),
+        };
+        market.setProducts(products);
 
         int action;
         do {
@@ -41,7 +54,7 @@ public class Main {
                     market.addProduct();
                     break;
                 case 2:
-                    market.printProduct();
+                    market.printProducts();
                     break;
                 case 3:
                     System.out.println(market);

@@ -65,7 +65,9 @@ public class Market {
     public void setProducts(Product[] products) {
         if (products != null) {
             this.products = products;
-        }else System.out.printf("%s product ni ma'lumotlarini kiriting \n", products);
+            index = products.length;
+            resizeArray();
+        }
     }
 
     public Employee[] getEmployees() {
@@ -194,7 +196,7 @@ public class Market {
     }
 
 
-    public void printProduct() {
+    public void printProducts() {
         for (int i = 0; i < index; i++) {
             System.out.println(i + 1 + "." + products[i]);
         }
@@ -224,7 +226,8 @@ public class Market {
 //4. public - hamma yerda ko'rinadi
 
 // polymorphism -> poly - ko'p, morphism - shakl (methodlar uchun ishlatilinadi)
-//
+// compile-time polymorphism -- overloading
+// method nomi bir xil parametrlari har xil bo'lishi kerak
 
 
  /* Data types (Ma'liumot turlari)
