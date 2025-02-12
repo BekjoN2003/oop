@@ -180,6 +180,24 @@ public class Market {
         }
     }
 
+    public void deleteProduct(){
+        String productName;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("productni nomini kriting ");
+        productName = scanner.nextLine();
+        Product[] products1 = new Product[products.length -1];
+        for (int i = 0, k = 0; i< index; i++){
+            if (products[i].getName().equals(productName)){
+                continue;
+            }
+            products1[k++] = products[i];
+        }
+        products = products1;
+        index --;
+
+        System.out.println("Mahsulot o'chirildi");
+    }
+
     public void getProduct() {
 
     }

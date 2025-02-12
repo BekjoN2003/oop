@@ -40,10 +40,11 @@ public class Main {
             System.out.println("Menyuni tanlang! " +
                     "\n1. Mahsulot qo'shish " +
                     "\n2. Mahsulotni ekranga chiqazish " +
-                    "\n3. Market haqida ma'lumot " +
-                    "\n4. Mahsulotlarni ketma-ket chiqarish" +
-                    "\n4. Employee qo'shishi " +
-                    "\n5. Employee larni ekranga chiqarish " +
+                    "\n3. Mahsulotni o'chirish" +
+                    "\n4. Market haqida ma'lumot " +
+                    "\n5. Mahsulotlarni ketma-ket chiqarish" +
+                    "\n6. Employee qo'shishi " +
+                    "\n7. Employee larni ekranga chiqarish " +
                     "\n0. Dasturni tugatish \n");
             Scanner scanner = new Scanner(System.in);
             action = scanner.nextInt();
@@ -57,19 +58,21 @@ public class Main {
                     market.printProducts();
                     break;
                 case 3:
-                    System.out.println(market);
+                    market.deleteProduct();
+                    break;
                 case 4:
+                    System.out.println(market);
+                case 5:
                     System.out.println("o'lchamni kiriting");
                     int size = scanner.nextInt();
                     market.printProducts(size);
                     break;
-                case 5:
-                    market.addEmployee();
                 case 6:
+                    market.addEmployee();
+                case 7:
                     market.printEmployee();
             }
         } while (true);
-
 
     }
 }
