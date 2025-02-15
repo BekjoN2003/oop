@@ -36,43 +36,75 @@ public class Main {
         market.setProducts(products);
 
         int action;
+        String permission;
         do {
-            System.out.println("Menyuni tanlang! " +
-                    "\n1. Mahsulot qo'shish " +
-                    "\n2. Mahsulotni ekranga chiqazish " +
-                    "\n3. Mahsulotni o'chirish" +
-                    "\n4. Market haqida ma'lumot " +
-                    "\n5. Mahsulotlarni ketma-ket chiqarish" +
-                    "\n6. Employee qo'shishi " +
-                    "\n7. Employee larni ekranga chiqarish " +
-                    "\n0. Dasturni tugatish \n");
             Scanner scanner = new Scanner(System.in);
-            action = scanner.nextInt();
-            switch (action) {
-                case 0:
-                    System.exit(0);
-                case 1:
-                    market.addProduct();
+            System.out.println("Siz sotuvchimisiz? Ha/Yo'q");
+            permission = scanner.nextLine();
+            if (permission.equals("Ha")) {
+                System.out.println("Menyuni tanlang! " +
+                        "\n1. Mahsulot qo'shish " +
+                        "\n2. Mahsulotni ekranga chiqazish " +
+                        "\n3. Mahsulotni o'chirish" +
+                        "\n4. Market haqida ma'lumot " +
+                        "\n5. Mahsulotlarni ketma-ket chiqarish" +
+                        "\n6. Employee qo'shishi " +
+                        "\n7. Employee larni ekranga chiqarish " +
+                        "\n0. Dasturni tugatish \n");
+
+                action = scanner.nextInt();
+                switch (action) {
+                    case 0:
+                        System.exit(0);
+                    case 1:
+                        market.addProduct();
+                        break;
+                    case 2:
+                        market.printProducts();
+                        break;
+                    case 3:
+                        market.deleteProduct();
+                        break;
+                    case 4:
+                        System.out.println(market);
+                    case 5:
+                        System.out.println("o'lchamni kiriting");
+                        int size = scanner.nextInt();
+                        market.printProducts(size);
+                        break;
+                    case 6:
+                        market.addEmployee();
+                    case 7:
+                        market.printEmployee();
+                }
+            }else if (permission.equals("Yo'q")){
+                int forUser;
+                System.out.println("Menyuni tanlang:" +
+                        "\n1. Mahsulot ekranga chiqarish" +
+                        "\n2. Mahsulotni ketma-ket chiqarish" +
+                        "\n3. Market haqida ma'lumot" +
+                        "\n0. Dasturni tugatish");
+                forUser = scanner.nextInt();
+                switch (forUser){
+                    case 0:
+                        System.exit(0);
+                        break;
+                    case 1: market.printProducts();
                     break;
-                case 2:
-                    market.printProducts();
-                    break;
-                case 3:
-                    market.deleteProduct();
-                    break;
-                case 4:
-                    System.out.println(market);
-                case 5:
-                    System.out.println("o'lchamni kiriting");
-                    int size = scanner.nextInt();
-                    market.printProducts(size);
-                    break;
-                case 6:
-                    market.addEmployee();
-                case 7:
-                    market.printEmployee();
+
+                    case 2:
+                        System.out.println("O'lchamni kiriting");
+                        int size;
+                        size = scanner.nextInt();
+                        market.printProducts(size);
+                        break;
+                    case 3:
+                        System.out.println(market);
+                        break;
+                }
             }
-        } while (true);
+            }while (true) ;
+
 
     }
 }

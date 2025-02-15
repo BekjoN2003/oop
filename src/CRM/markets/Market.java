@@ -83,7 +83,7 @@ public class Market {
     }
 
     public void setSquare(Double square) {
-        if (square >= 1.2D) {
+        if (square <= 1.2D) {
             this.square = square;
         } else System.out.printf("%s Market maydonini to'g'ri kiriting \n", square);
     }
@@ -95,7 +95,7 @@ public class Market {
     public void setStartTime(String startTime) {
         if (startTime != null){
         this.startTime = startTime;
-        } else System.out.printf("%s Marketning ochilish vaqtini kiriting");
+        } else System.out.print("%s Marketning ochilish vaqtini kiriting");
     }
 
     public String getEndTime() {
@@ -105,7 +105,7 @@ public class Market {
     public void setEndTime(String endTime) {
         if (endTime != null) {
             this.endTime = endTime;
-        } else System.out.printf("%s Marketning yopilish vaqtini kiriting");
+        } else System.out.print("%s Marketning yopilish vaqtini kiriting");
     }
 
     public int getIndex() {
