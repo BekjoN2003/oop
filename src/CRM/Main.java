@@ -1,6 +1,7 @@
 package CRM;
 
 import CRM.markets.Market;
+import CRM.personnel.Employee;
 import CRM.product.Product;
 
 import java.util.Scanner;
@@ -20,7 +21,7 @@ public class Main {
                 "08:00",
                 "22:00",
                 2,
-                5
+                2
         );
 
         Product[] products = new Product[]{
@@ -37,11 +38,11 @@ public class Main {
 
         int action;
         String permission;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Siz sotuvchimisiz? Ha/Yo'q");
+        permission = scanner.nextLine();
         do {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Siz sotuvchimisiz? Ha/Yo'q");
-            permission = scanner.nextLine();
-            if (permission.equals("Ha")) {
+            if (permission.equals("Ha") || permission.equals("ha")) {
                 System.out.println("Menyuni tanlang! " +
                         "\n1. Mahsulot qo'shish " +
                         "\n2. Mahsulotni ekranga chiqazish " +
@@ -50,6 +51,7 @@ public class Main {
                         "\n5. Mahsulotlarni ketma-ket chiqarish" +
                         "\n6. Employee qo'shishi " +
                         "\n7. Employee larni ekranga chiqarish " +
+                        "\n8. Employee larni o'chirish" +
                         "\n0. Dasturni tugatish \n");
 
                 action = scanner.nextInt();
@@ -74,10 +76,14 @@ public class Main {
                         break;
                     case 6:
                         market.addEmployee();
+                        break;
                     case 7:
                         market.printEmployee();
+                        break;
+                    case 8:
+                        market.deleteEmployee();
                 }
-            }else if (permission.equals("Yo'q")){
+            }else if (permission.equals("Yo'q") || permission.equals("yo'q") || permission.equals("yoq")){
                 int forUser;
                 System.out.println("Menyuni tanlang:" +
                         "\n1. Mahsulot ekranga chiqarish" +

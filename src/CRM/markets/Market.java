@@ -19,7 +19,7 @@ public class Market {
      * index of new inserted product
      */
     private int index;
-
+    private int indexE;
     // Topshiriq: Yangi method qo'shish, yani Mahsulotni o'chirish degan;
 
     public Market(String name, String address, Double square, String startTime, String endTime, int productCount, int employeeCount) {
@@ -34,7 +34,7 @@ public class Market {
 
     public Market() {
         products = new Product[10];
-        employees = new Employee[5];
+        employees = new Employee[10];
     }
 
     public String getName() {
@@ -75,7 +75,11 @@ public class Market {
     }
 
     public void setEmployees(Employee[] employees) {
-        this.employees = employees;
+        if(employees != null){
+            this.employees = employees;
+            indexE = employees.length;
+            resizeArray();
+        }
     }
 
     public Double getSquare() {
@@ -159,25 +163,37 @@ public class Market {
         salary = scanner.nextDouble();
 
         Employee employee = new Employee(firstName, lastName, experience, salary);
-        employees[index++] = employee;
+        if (indexE == employees.length){
+            resizeArray();
+        }
+        employees[indexE++] = employee;
     }
 
     public void printEmployee() {
-        for (int i = 0; i < index; i++) {
-            System.out.println(i + 1 + "." + employees[i]);
+        for (int i = 0; i < indexE; i++) {
+            if (employees[i] != null){
+                System.out.println(i + 1 + "." + employees[i] + "Employee qo'shildi \n" );
+            }
         }
     }
 
     public void deleteEmployee() {
         String name;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("O'chirish uchun ishchi ismini kiriting");
+        System.out.println("O'chirish uchun Empolee ismini kiriting");
         name = scanner.nextLine();
 
         Employee[] employees1 = new Employee[employees.length - 1];
-        for (int i = 0; i < index; i++) {
 
+        for (int i = 0, k = 0; i < indexE; i++) {
+            if (employees[i].getFirstName().equals(name)){
+                continue;
+            }
+            employees1[k++] = employees[i];
         }
+        employees = employees1;
+        indexE --;
+        System.out.println("Enployee o'chirildi!");
     }
 
     public void deleteProduct(){
@@ -197,6 +213,12 @@ public class Market {
 
         System.out.println("Mahsulot o'chirildi");
     }
+    //TODO: buy Product methodini ishga tushurish
+//    public void buyProduct(){
+//        String product;
+//        Scanner scanner = new Scanner(System.in);
+//
+//    }
 
     public void getProduct() {
 
@@ -211,6 +233,7 @@ public class Market {
 //        }
 //        products = temp;
         products = Arrays.copyOf(products, products.length * 2);
+        employees = Arrays.copyOf(employees, employees.length * 2);
     }
 
 
