@@ -1,11 +1,11 @@
 package CRM.markets;
-
-
 import CRM.personnel.Employee;
 import CRM.product.Product;
-
 import java.util.Arrays;
 import java.util.Scanner;
+import CRM.helper.Config.*;
+
+import static CRM.helper.Config.scanner;
 
 public class Market {
     private String name;
@@ -19,7 +19,6 @@ public class Market {
      * index of new inserted product
      */
     private int index;
-    private int indexE;
     // Topshiriq: Yangi method qo'shish, yani Mahsulotni o'chirish degan;
 
     public Market(String name, String address, Double square, String startTime, String endTime, int productCount, int employeeCount) {
@@ -77,7 +76,7 @@ public class Market {
     public void setEmployees(Employee[] employees) {
         if(employees != null){
             this.employees = employees;
-            indexE = employees.length;
+            index = employees.length;
             resizeArray();
         }
     }
@@ -124,7 +123,6 @@ public class Market {
         String name, type, unit;
         double price, amount;
 
-        Scanner scanner = new Scanner(System.in);
         System.out.print("productName: ");
         name = scanner.nextLine();
         System.out.print("type: ");
@@ -149,6 +147,7 @@ public class Market {
     }
 
     public void addEmployee() {
+        index = 0;
         String firstName, lastName;
         int experience;
         double salary;
@@ -163,16 +162,17 @@ public class Market {
         salary = scanner.nextDouble();
 
         Employee employee = new Employee(firstName, lastName, experience, salary);
-        if (indexE == employees.length){
+
+        if (index == employees.length){
             resizeArray();
         }
-        employees[indexE++] = employee;
+        employees[index++] = employee;
     }
 
     public void printEmployee() {
-        for (int i = 0; i < indexE; i++) {
+        for (int i = 0; i < index; i++) {
             if (employees[i] != null){
-                System.out.println(i + 1 + "." + employees[i] + "Employee qo'shildi \n" );
+                System.out.println(i + 1 + "." + employees[i]);
             }
         }
     }
@@ -185,14 +185,14 @@ public class Market {
 
         Employee[] employees1 = new Employee[employees.length - 1];
 
-        for (int i = 0, k = 0; i < indexE; i++) {
+        for (int i = 0, k = 0; i < index; i++) {
             if (employees[i].getFirstName().equals(name)){
                 continue;
             }
             employees1[k++] = employees[i];
         }
         employees = employees1;
-        indexE --;
+        index --;
         System.out.println("Enployee o'chirildi!");
     }
 
