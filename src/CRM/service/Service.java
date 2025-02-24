@@ -20,12 +20,12 @@ public class Service {
             int result = scanner.nextInt();
             if (result == 1) {
                 // Haridorga bog'liq methodlar
-                Buyer buyer = new Buyer(market);
+                BuyerService buyer = new BuyerService(market);
                 buyer.start();
                 break;
             } else if (result == 2) {
                 // Sotuvchiga bog'liq methodlar
-                Seller seller = new Seller(market);
+                SellerService seller = new SellerService(market);
                 seller.start();
                 break;
             }
