@@ -2,14 +2,16 @@ package CRM.service;
 
 import CRM.markets.Market;
 import CRM.personnel.Users;
+import CRM.product.Product;
 
 import static CRM.helper.Config.scanner;
 
-public class Buyer {
+public class BuyerService {
      private Market market;
      private Users users;
+     private Product[] products;
 
-     public Buyer(Market market){
+     public BuyerService(Market market){
          this.market = market;
      }
 
@@ -43,10 +45,19 @@ public class Buyer {
                  case 3:
                      market.printProducts(); break;
                  case 4:
-
                      System.out.println(market);break;
+                 case 5:
+                     buyProduct(); break;
              }
          }
+   }
+   public void buyProduct(){
+      market.printProducts();
+      String amount;
+       System.out.println("Sotib olmoqchi bo'lgan mahsulotingizni kiritng");
+       amount = scanner.nextLine();
+       Product[] product = new Product[products.length];
+       //for (int i = 0; i< )
    }
 
     public void changeUserInfo(){

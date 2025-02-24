@@ -1,10 +1,13 @@
 package CRM.personnel;
 
+import java.util.Scanner;
+
 public class Employee {
-    String firstName;
-    String lastName;
-    Integer experience;
-    Double salary;
+    private String firstName;
+    private String lastName;
+    private Integer experience;
+    private Double salary;
+
 
     public Employee(String firstName, String lastName, Integer experience, Double salary){
         this.firstName = firstName;
